@@ -4,20 +4,14 @@ class Mydata_model extends CI_Model {
 	public function __construct() {
 		$this->load->database();
 	}
-	public function set_input() {
-		$data = array(
-			'body_weight' => $this->input->post('body_weight'),
-			'body_fat_per' => $this->input->post('body_fat_per'),
-			'entry_date' => date("Y-m-d H:i:s"),
-		);
+	public function create_input($data) {
 		return $this->db->insert('mydata', $data);
 	}
-	public function up_input() {
-		$data = array(
-			'body_weight' => $this->input->post('body_weight'),
-			'body_fat_per' => $this->input->post('body_fat_per'),
-		);
-		$this->db->where('entry_date', $this->input->post('entry_date'));
+	public function set_input($data) {
+		return $this->db->insert('mydata', $data);
+	}
+	public function up_input($data, $entdate) {
+		$this->db->where('entry_date', $entdate);
 		return $this->db->update('mydata', $data);
 	}
         public function get_data($date) {
@@ -37,5 +31,9 @@ class Mydata_model extends CI_Model {
 		$sql='select * from mydata order by entry_date desc limit '.$pos.', '.$last;
 		$query=$this->db->query($sql);
 		return $query;
+	}
+	public function del_data($date) {
+		$this->db->where('entry_date', $date);
+		return $this->db->delete('mydata');
 	}
 }

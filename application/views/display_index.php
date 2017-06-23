@@ -13,4 +13,4 @@ foreach($body_data as $data) {
 ?>
 -->
 
-<a href="/codeig/topmenu">Return TopMenu</a>
+<a href="/mytools/bodyweight/topmenu">Return TopMenu</a>

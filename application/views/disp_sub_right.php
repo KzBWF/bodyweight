@@ -1,1 +1,1 @@
-<a href="/codeig/display?offset=<?php echo $next; ?>">>>></a>
+<a href="/mytools/bodyweight/display?offset=<?php echo $next; ?>">>>></a>

@@ -19,7 +19,12 @@ class Input extends CI_Controller {
 			$this->load->view('footer');
 		}
 		else {
-			$this->mydata_model->set_input();
+                	$data = array(
+                        	'body_weight' => $this->input->post('body_weight'),
+                        	'body_fat_per' => $this->input->post('body_fat_per'),
+                        	'entry_date' => date("Y-m-d H:i:s"),
+                	);
+			$this->mydata_model->set_input($data);
 			$data['title']="Input Result";
 			$this->load->view('header', $data);
 			$this->load->view('input_success');

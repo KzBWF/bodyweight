@@ -1,1 +1,1 @@
-<a href="/codeig/modify?prev=<?php echo $pos; ?>">>>></a>
+<a href="/mytools/bodyweight/modify?prev=<?php echo $pos; ?>">>>></a>

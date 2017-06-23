@@ -1,1 +1,1 @@
-<a href="/codeig/modify?next=<?php echo $pos; ?>"><<<</a>
+<a href="/mytools/bodyweight/modify?next=<?php echo $pos; ?>"><<<</a>

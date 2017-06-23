@@ -1,3 +1,3 @@
 Save SUCCESS!</br>
 
-<a href="/codeig/topmenu">Return TopMenu</a> 
+<a href="/mytools/bodyweight/topmenu">Return TopMenu</a> 

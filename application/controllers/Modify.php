@@ -52,16 +52,26 @@ class Modify extends CI_Controller {
                         $this->load->view('footer');
 		}
 		else {
-			// Title
-                     	$data['title']="Modify Success";
-        		$this->load->view('header', $data);
-
-			// Update Mydata
-			$data['result']=$this->mydata_model->up_input();
 			$data['body_weight']=$this->input->post('body_weight');
 			$data['body_fat_per']=$this->input->post('body_fat_per');
-			$data['entry_date']=$this->input->post('entry_date');
 
+			if ($this->input->post('delete') == 1) {
+				$data['entry_date']=$this->input->post('entry_date');
+				// Delete Mydata
+				$data['result']=$this->mydata_model->del_data($this->input->post('entry_date'));
+				// Title
+                     		$data['title']="Delete Success";
+			}
+			else {
+				$entdate =  $this->input->post('entry_date');
+				// Update Mydata
+				$data['result']=$this->mydata_model->up_input($data, $entdate);
+				// Title
+                     		$data['title']="Modify Success";
+				$data['entry_date']=$this->input->post('entry_date');
+			}
+
+        		$this->load->view('header', $data);
                         $this->load->view('modify_success', $data);
                         $this->load->view('footer');
 		}

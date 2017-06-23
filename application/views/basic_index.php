@@ -16,5 +16,5 @@
 	<input type="submit" name="submit" value="<?php echo $btntext; ?>" />
 </form>
 
-<a href="/codeig/topmenu">Return TopMenu</a>
+<a href="/mytools/bodyweight/topmenu">Return TopMenu</a>
 

@@ -42,11 +42,19 @@ class Basic extends CI_Controller {
 			$this->load->view('footer');
 		}
 		else {
+                	$data = array(
+                        	'height' => $this->input->post('height'),
+                        	'name'   => $this->input->post('name'),
+                        	'age'    => $this->input->post('age'),
+                       	 	'gender' => $this->input->post('gender'),
+                        	'entry_date' => date("Y-m-d H:i:s"),
+                	);			
 			if ($this->result == NULL) {
-				$this->basicdata_model->set();
+				$this->basicdata_model->set($data);
 			}
 			else {
-				$this->basicdata_model->up();
+				$id = $this->input->post('user_id');
+				$this->basicdata_model->up($data, $id);
 			}
 			$data['title']="Basic Info Result";
 			$this->load->view('header', $data);
