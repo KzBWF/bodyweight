@@ -52,11 +52,13 @@ class Display extends CI_Controller {
 		$wei=array();
 		$fat=array();
 		$day=array();
+		$dat_cnt=0;
 		foreach( $datas as $da ) {
 			array_push($wei,$da->body_weight);
 			array_push($fat,$da->body_fat_per);
 			$tmp=date("m/d", strtotime($da->entry_date));
 			array_push($day,$tmp);
+			$dat_cnt++;
 		}
                 $myData->addPoints($wei, "weight", "Body Weight");
                 $myData->addPoints($fat, "fat_per", "Body Fat Percent");
@@ -73,10 +75,14 @@ class Display extends CI_Controller {
 			$myCache->saveFromCache($ChartHash, "basic.png");
 		}
 		else {
+			$adwidth=0;
+			if ($dat_cnt > 10) {
+				$adwidth = 46*($dat_cnt-10);
+			}
 
-                	$myPicture=new pImage(500,300,$myData);
+                	$myPicture=new pImage(500+$adwidth,300,$myData);
                 	$myPicture->setFontProperties(array("FontName"=>"/var/www/html/codeig/vendor/dmelo/pchart/library/fonts/Forgotte.ttf","FontSize"=>11));
-                	$myPicture->setGraphArea(40,10,460,280);
+                	$myPicture->setGraphArea(40,10,460+$adwidth,280);
                 	$myPicture->drawScale();
                 	$myPicture->drawLineChart(array("DisplayValues"=>TRUE,"DisplayColor"=>DISPLAY_AUTO));
 
